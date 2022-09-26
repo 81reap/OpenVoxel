@@ -57,8 +57,7 @@ public class Chunk {
         chunkObject.name = coord.x + ", " + coord.z;
 
         PopulateVoxelMap();
-        CreateMeshData();
-        CreateMesh();
+        UpdateChunk();
     }
 
     void PopulateVoxelMap() {
@@ -71,13 +70,24 @@ public class Chunk {
         isVoxelMapPopulated = true;
     }
 
-    void CreateMeshData() {
+    void UpdateChunk() {
+        ClearMeshData();
+
         for (int x= 0; x< VoxelData.ChunkLength; x++) {
         for (int y= 0; y< VoxelData.ChunkHeight; y++) {
         for (int z= 0; z< VoxelData.ChunkWidth; z++) {
             if (world.blockTypes[voxelMap[x,y,z]].isSolid)
-                AddVoxelDataToChunk(new Vector3(x, y, z));
+                UpdateMeshData(new Vector3(x, y, z));
         }}}
+        
+        CreateMesh();
+    }
+
+    void ClearMeshData () {
+        vertexIndex = 0;
+        vertices.Clear();
+        triangles.Clear();
+        uvs.Clear();
     }
 
     public byte GetVoxelFromMap(Vector3 pos) {
@@ -91,6 +101,32 @@ public class Chunk {
             z< 0 || z> VoxelData.ChunkWidth-1 ) 
             return false;
         return true;
+    }
+
+    public void EditVoxel (Vector3 pos, byte newID) {
+        int x = Mathf.FloorToInt(pos.x);
+        int y = Mathf.FloorToInt(pos.y);
+        int z = Mathf.FloorToInt(pos.z);
+
+        x -= Mathf.FloorToInt(chunkObject.transform.position.x);
+        z -= Mathf.FloorToInt(chunkObject.transform.position.z);
+
+        voxelMap[x, y, z] = newID;
+
+        // update chunks
+        UpdateSurroundingVoxels(x, y, z);
+        UpdateChunk();
+    }
+
+    void UpdateSurroundingVoxels (int x, int y, int z) {
+        Vector3 thisVoxel = new Vector3(x, y, z);
+        for (int p = 0; p < 6; p++) {
+            Vector3 currentVoxel = thisVoxel + VoxelData.faceChecks[p];
+
+            if (!IsBlockInChunk((int)currentVoxel.x, (int)currentVoxel.y, (int)currentVoxel.z)) {
+                world.GetChunkFromVector3(currentVoxel + position).UpdateChunk();
+            }
+        }
     }
 
     bool CheckVoxel( Vector3 pos ) {
@@ -115,7 +151,7 @@ public class Chunk {
         return voxelMap[x, y, z];
     }
 
-    void AddVoxelDataToChunk( Vector3 pos ) {
+    void UpdateMeshData( Vector3 pos ) {
         for (int p= 0; p< 6; p++) {
             if (CheckVoxel(pos+ VoxelData.faceChecks[p]))
                 continue;

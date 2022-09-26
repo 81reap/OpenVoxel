@@ -17,8 +17,8 @@ MonoBehaviour:
   terrainHeight: 42
   terrainScale: 0.2
   lodes:
-  - nodeName: Air
-    blockID: 0
+  - nodeName: Coal Ore
+    blockID: 6
     minHeight: 1
     maxHeight: 255
     scale: 0.1
