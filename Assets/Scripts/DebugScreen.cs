@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DebugScreen : MonoBehaviour {
     World world;
-    Text text;
+    TextMeshProUGUI text;
 
     float frameRate;
     float timer;
@@ -15,14 +16,14 @@ public class DebugScreen : MonoBehaviour {
 
     void Start() {
         world = GameObject.Find("World").GetComponent<World>();
-        text = GetComponent<Text>();
+        text = GetComponent<TextMeshProUGUI>();
 
         halfWorldSizeInVoxels = VoxelData.WorldSizeInBlocks / 2;
         halfWorldSizeInChunks = VoxelData.WorldSizeInChunks / 2;
     }
 
     void Update() {
-        string debugText = "Voxel Game";
+        string debugText = "OpenVoxel Game";
         debugText += "\n";
         debugText += frameRate + " fps";
         debugText += "\n\n";

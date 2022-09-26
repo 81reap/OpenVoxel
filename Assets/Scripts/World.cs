@@ -49,12 +49,13 @@ public class World : MonoBehaviour {
         return new ChunkCoord(x, z);
     }
 
+    // this is a coroutine that can pause and start back up as opposed to tanking your system
     IEnumerator CreateChunks () {
         isCreatingChunks = true;
         while (chunksToCreate.Count > 0) {
             chunks[chunksToCreate[0].x, chunksToCreate[0].z].Init();
-            chunksToCreate.RemoveAt(0);
-            yield return null;
+            chunksToCreate.RemoveAt(0); // we always use 0th element to treat this array like a queue
+            yield return null; // yeilds for the rest of the game
         }
         isCreatingChunks = false;   
     }

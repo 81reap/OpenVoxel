@@ -18,6 +18,7 @@ public class Chunk {
     World world;
     public bool isVoxelMapPopulated = false;
 
+    // we need to do it like this so that we can generate chunks at a later point in time
     private bool _isActive;
     public bool isActive {
         get { return _isActive; }
