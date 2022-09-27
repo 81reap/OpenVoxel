@@ -740,8 +740,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Debug Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c7c43c20cbd2c24ba73a416da4ad329, type: 2}
+  m_sharedMaterial: {fileID: 3520290834830446456, guid: 1c7c43c20cbd2c24ba73a416da4ad329, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -765,8 +765,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   player: {fileID: 275848026}
   highlight: {fileID: 1879288195}
   itemSlots:
-  - itemID: 1
+  - itemID: 10
     icon: {fileID: 4876431442863784062}
   - itemID: 2
     icon: {fileID: 1939775444}
@@ -1756,9 +1756,11 @@ MonoBehaviour:
   player: {fileID: 275848027}
   spawn: {x: 0, y: 0, z: 0}
   material: {fileID: 2100000, guid: f1281213489d8624ba9c7dda59350ba0, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: a322545a09dcaaf4abd14f4780e82c31, type: 2}
   blockTypes:
   - blockName: Air
     isSolid: 0
+    isTransparent: 1
     icon: {fileID: 0}
     backFaceTexture: 0
     frontFaceTexture: 0
@@ -1768,7 +1770,8 @@ MonoBehaviour:
     rightFaceTexture: 0
   - blockName: Stone
     isSolid: 1
-    icon: {fileID: 359892984, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: 1333480662, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 0
     frontFaceTexture: 0
     topFaceTexture: 0
@@ -1777,7 +1780,8 @@ MonoBehaviour:
     rightFaceTexture: 0
   - blockName: Grass
     isSolid: 1
-    icon: {fileID: 1235314268, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: 890747962, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 2
     frontFaceTexture: 2
     topFaceTexture: 7
@@ -1786,7 +1790,8 @@ MonoBehaviour:
     rightFaceTexture: 2
   - blockName: Dirt
     isSolid: 1
-    icon: {fileID: -1276675776, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: 1917111419, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 1
     frontFaceTexture: 1
     topFaceTexture: 1
@@ -1795,7 +1800,8 @@ MonoBehaviour:
     rightFaceTexture: 1
   - blockName: Cobblestone
     isSolid: 1
-    icon: {fileID: -876200434, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: 1022192236, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 8
     frontFaceTexture: 8
     topFaceTexture: 8
@@ -1804,7 +1810,8 @@ MonoBehaviour:
     rightFaceTexture: 8
   - blockName: Oak Planks
     isSolid: 1
-    icon: {fileID: 664111357, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: -742762233, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 4
     frontFaceTexture: 4
     topFaceTexture: 4
@@ -1813,7 +1820,8 @@ MonoBehaviour:
     rightFaceTexture: 4
   - blockName: Bedrock
     isSolid: 1
-    icon: {fileID: -782941801, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: -2064120489, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 9
     frontFaceTexture: 9
     topFaceTexture: 9
@@ -1822,7 +1830,8 @@ MonoBehaviour:
     rightFaceTexture: 9
   - blockName: Sand
     isSolid: 1
-    icon: {fileID: 1655722371, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: -1769119414, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 10
     frontFaceTexture: 10
     topFaceTexture: 10
@@ -1831,7 +1840,8 @@ MonoBehaviour:
     rightFaceTexture: 10
   - blockName: Oak Log
     isSolid: 1
-    icon: {fileID: 699070887, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: -742762233, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 5
     frontFaceTexture: 5
     topFaceTexture: 6
@@ -1840,16 +1850,18 @@ MonoBehaviour:
     rightFaceTexture: 5
   - blockName: Bricks
     isSolid: 1
-    icon: {fileID: 719655084, guid: 45185b6871172cb4398633b833dd3864, type: 3}
+    isTransparent: 0
+    icon: {fileID: 145191360, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 11
     frontFaceTexture: 11
     topFaceTexture: 11
     bottomFaceTexture: 11
     leftFaceTexture: 11
     rightFaceTexture: 11
-  - blockName: Coal Ore
+  - blockName: Glass
     isSolid: 1
-    icon: {fileID: 0}
+    isTransparent: 1
+    icon: {fileID: -66424836, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
     backFaceTexture: 3
     frontFaceTexture: 3
     topFaceTexture: 3

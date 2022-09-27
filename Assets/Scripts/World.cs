@@ -10,6 +10,7 @@ public class World : MonoBehaviour {
     public Vector3 spawn;
 
     public Material material;
+    public Material transparentMaterial;
     public BlockType[] blockTypes;
 
     Chunk[,] chunks = new Chunk[VoxelData.WorldSizeInChunks, VoxelData.WorldSizeInChunks];
@@ -90,6 +91,18 @@ public class World : MonoBehaviour {
             return blockTypes[chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos)].isSolid;
 
         return blockTypes[GetBlock(pos)].isSolid;
+    }
+
+    public bool CheckIfVoxelTransparent (Vector3 pos) {
+        ChunkCoord chunk = new ChunkCoord(pos);
+
+        if (!IsChunkInWorld(chunk.x, chunk.z) || pos.y < 0 || pos.y > VoxelData.ChunkHeight)
+            return false;
+
+        if (chunks[chunk.x, chunk.z] != null && chunks[chunk.x, chunk.z].isVoxelMapPopulated)
+            return blockTypes[chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos)].isTransparent;
+
+        return blockTypes[GetBlock(pos)].isTransparent;
     }
 
     void CheckViewDistance() {
@@ -182,6 +195,7 @@ public class World : MonoBehaviour {
 public class BlockType {
     public string blockName;
     public bool isSolid;
+    public bool isTransparent;
     public Sprite icon;
 
     [Header("Texture Values")]

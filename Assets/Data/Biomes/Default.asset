@@ -17,8 +17,8 @@ MonoBehaviour:
   terrainHeight: 64
   terrainScale: 0.2
   lodes:
-  - nodeName: Coal Ore
-    blockID: 10
+  - nodeName: Oak Planks
+    blockID: 5
     minHeight: 1
     maxHeight: 225
     scale: 0.1
