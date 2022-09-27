@@ -17,6 +17,8 @@ public class Chunk {
 
     public byte[,,] voxelMap= new byte[VoxelData.ChunkLength, VoxelData.ChunkHeight, VoxelData.ChunkWidth];
 
+    public Queue<VoxelMod> modifications = new Queue<VoxelMod>();
+
     World world;
     public bool isVoxelMapPopulated = false;
 
@@ -75,7 +77,13 @@ public class Chunk {
         isVoxelMapPopulated = true;
     }
 
-    void UpdateChunk() {
+    public void UpdateChunk() {
+        while (modifications.Count > 0) {
+            VoxelMod v = modifications.Dequeue();
+            Vector3 pos = v.position -= position;
+            voxelMap[(int)pos.x, (int)pos.y, (int)pos.z] = v.id;
+        }
+
         ClearMeshData();
 
         for (int x= 0; x< VoxelData.ChunkLength; x++) {
@@ -92,6 +100,7 @@ public class Chunk {
         vertexIndex = 0;
         vertices.Clear();
         triangles.Clear();
+        transparentTriangles.Clear();
         uvs.Clear();
     }
 

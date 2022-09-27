@@ -1868,6 +1868,16 @@ MonoBehaviour:
     bottomFaceTexture: 3
     leftFaceTexture: 3
     rightFaceTexture: 3
+  - blockName: Oak Leaves
+    isSolid: 1
+    isTransparent: 1
+    icon: {fileID: -66424836, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
+    backFaceTexture: 16
+    frontFaceTexture: 16
+    topFaceTexture: 16
+    bottomFaceTexture: 16
+    leftFaceTexture: 16
+    rightFaceTexture: 16
   debugScreen: {fileID: 724991993}
 --- !u!4 &1426467508
 Transform:
