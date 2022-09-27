@@ -157,16 +157,16 @@ public class World : MonoBehaviour {
         int terrainHeight = Mathf.FloorToInt(biome.terrainHeight* Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biome.terrainScale)) + biome.solidGroundHeight;
         byte voxelValue = 0;
         if (yAbs == terrainHeight)
-            voxelValue= 3; // grass
+            voxelValue= 2; // grass
         else if (yAbs< terrainHeight && yAbs> terrainHeight- 4)
-            voxelValue= 4; // dirt
+            voxelValue= 3; // dirt
         else if (yAbs> terrainHeight)
             return 0; // air
         else
-            voxelValue= 2; // stone
+            voxelValue= 1; // stone
 
         // -!- second pass -!-
-        if (voxelValue == 2) {
+        if (voxelValue == 1) {
             foreach (Lode lode in biome.lodes) {
                 if (yAbs> lode.minHeight && yAbs< lode.maxHeight)
                     if (Noise.Get3DPerlin(pos, lode.noiseOffset, lode.scale, lode.threshold))
@@ -182,6 +182,7 @@ public class World : MonoBehaviour {
 public class BlockType {
     public string blockName;
     public bool isSolid;
+    public Sprite icon;
 
     [Header("Texture Values")]
     public int backFaceTexture;

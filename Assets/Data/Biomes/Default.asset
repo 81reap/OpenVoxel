@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biomeName: Default
   solidGroundHeight: 42
-  terrainHeight: 42
+  terrainHeight: 64
   terrainScale: 0.2
   lodes:
   - nodeName: Coal Ore
-    blockID: 6
+    blockID: 10
     minHeight: 1
-    maxHeight: 255
+    maxHeight: 225
     scale: 0.1
     threshold: 0.5
     noiseOffset: 0
   - nodeName: Sand
-    blockID: 5
+    blockID: 7
     minHeight: 30
-    maxHeight: 60
+    maxHeight: 75
     scale: 0.2
     threshold: 0.6
     noiseOffset: 500
