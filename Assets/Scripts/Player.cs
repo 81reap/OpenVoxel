@@ -32,7 +32,8 @@ public class Player : MonoBehaviour {
     public float checkIncrement = 0.1f;
     public float reach = 8f;
 
-    public byte selectedBlockIndex = 1;
+    public Toolbar toolbar;
+
 
     private void Start() {
         cam = GameObject.Find("Main Camera").transform;
@@ -42,18 +43,26 @@ public class Player : MonoBehaviour {
     }
 
     private void FixedUpdate() { 
-        CalculateVelocity();
-        if (jumpRequest)
-            Jump();
+        if(!world.inUI) {
+            CalculateVelocity();
+            if (jumpRequest)
+                Jump();
 
-        transform.Rotate(Vector3.up* mouseHorizontal);
-        cam.Rotate(-Vector3.right* mouseVertical);
-        transform.Translate(velocity, Space.World);
+            transform.Rotate(Vector3.up* mouseHorizontal);
+            cam.Rotate(-Vector3.right* mouseVertical);
+            transform.Translate(velocity, Space.World);
+        }
     }
 
     private void Update() {
-        GetPlayerInputs();
-        placeCursorBlock();
+        if(Input.GetKeyDown(KeyCode.I)) {
+            world.inUI = !world.inUI;
+        }
+
+        if(!world.inUI) {
+            GetPlayerInputs();
+            placeCursorBlock();
+        }
     }
 
     void Jump () {
@@ -106,8 +115,12 @@ public class Player : MonoBehaviour {
         if (highlightBlock.gameObject.activeSelf) {
             if (Input.GetMouseButtonDown(0)) // break
                 world.GetChunkFromVector3(highlightBlock.position).EditVoxel(highlightBlock.position, 0); 
-            if (Input.GetMouseButtonDown(1)) // place
-                world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, selectedBlockIndex); 
+            if (Input.GetMouseButtonDown(1)) { // place
+                if (toolbar.slots[toolbar.slotIndex].HasItem) {
+                    world.GetChunkFromVector3(placeBlock.position).EditVoxel(placeBlock.position, toolbar.slots[toolbar.slotIndex].itemSlot.stack.id); 
+                    toolbar.slots[toolbar.slotIndex].itemSlot.Take(1);
+                }
+            }
         }
     }
 

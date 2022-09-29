@@ -28,6 +28,14 @@ public class World : MonoBehaviour {
 
     Queue<Queue<VoxelMod>> modifications = new Queue<Queue<VoxelMod>>();
 
+    private bool _inUI = false;
+    public bool inUI {
+        get {return _inUI;}
+        set {
+            _inUI = value;
+        }
+    }
+
     public GameObject debugScreen;
 
     private void Start() {
