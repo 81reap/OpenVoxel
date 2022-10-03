@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class World : MonoBehaviour {
+    [Header("World Gen Values")]
     public int seed;
     public BiomeAttributes biome;
 
-    [Range(0.95f, 0f)]
+    [Header("Performance")]
+    public bool enableThreading;
+
+    [Range(0f, 1f)]
     public float globalLightLevel;
     public Color day;
     public Color night;
@@ -57,6 +61,9 @@ public class World : MonoBehaviour {
     private void Start() {
         Random.InitState(seed);
 
+        Shader.SetGlobalFloat("minGlobalLightLevel", VoxelData.minLightLevel);
+        Shader.SetGlobalFloat("maxGlobalLightLevel", VoxelData.maxLightLevel);
+
         spawn = new Vector3(VoxelData.WorldSizeInBlocks / 2f, VoxelData.ChunkHeight- 50f, VoxelData.WorldSizeInBlocks / 2f);
         GenerateWorld();
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
@@ -67,7 +74,7 @@ public class World : MonoBehaviour {
         playerChunkCoord = GetChunkCoordFromVector3(player.position);
 
         Shader.SetGlobalFloat("GlobalLightLevel", globalLightLevel);
-        Camera.main.backgroundColor = Color.Lerp(day, night, globalLightLevel);
+        Camera.main.backgroundColor = Color.Lerp(night, day, globalLightLevel);
 
         if (!GetChunkCoordFromVector3(player.transform.position).Equals(playerLastChunkCoord))
             CheckViewDistance();
@@ -165,21 +172,21 @@ public class World : MonoBehaviour {
             return false;
 
         if (chunks[chunk.x, chunk.z] != null && chunks[chunk.x, chunk.z].isEditable)
-            return blockTypes[chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos)].isSolid;
+            return blockTypes[chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos).id].isSolid;
 
         return blockTypes[GetBlock(pos)].isSolid;
     }
 
-    public bool CheckIfVoxelTransparent (Vector3 pos) {
+    public VoxelState GetVoxelState (Vector3 pos) {
         ChunkCoord chunk = new ChunkCoord(pos);
 
         if (!IsChunkInWorld(chunk.x, chunk.z) || pos.y < 0 || pos.y > VoxelData.ChunkHeight)
-            return false;
+            return null;
 
         if (chunks[chunk.x, chunk.z] != null && chunks[chunk.x, chunk.z].isEditable)
-            return blockTypes[chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos)].isTransparent;
+            return chunks[chunk.x, chunk.z].GetVoxelFromGlobalVector3(pos);
 
-        return blockTypes[GetBlock(pos)].isTransparent;
+        return new VoxelState(GetBlock(pos));
     }
 
     void CheckViewDistance() {
@@ -279,7 +286,8 @@ public class World : MonoBehaviour {
 public class BlockType {
     public string blockName;
     public bool isSolid;
-    public bool isTransparent;
+    public bool rederNeighborFaces;
+    public float transparency;
     public Sprite icon;
 
     [Header("Texture Values")]
