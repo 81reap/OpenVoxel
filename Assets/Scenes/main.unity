@@ -1918,9 +1918,13 @@ MonoBehaviour:
     version: 0.0.01
     viewDistance: 4
     enableThreading: 1
+    enableAnimatedChunks: 0
     mouseSensitivity: 2
     seed: 69420
-  biome: {fileID: 11400000, guid: c999b58f1749091428f3eacc99e25f0a, type: 2}
+  biomes:
+  - {fileID: 11400000, guid: c999b58f1749091428f3eacc99e25f0a, type: 2}
+  - {fileID: 11400000, guid: 894c44c0560945046b4522faee5109bc, type: 2}
+  - {fileID: 11400000, guid: 2efac285d89a9844b9f8c52325cf95ef, type: 2}
   globalLightLevel: 0.55
   day: {r: 0.066082224, g: 0.7729824, b: 0.9339623, a: 0}
   night: {r: 0.09531861, g: 0.12593205, b: 0.16981131, a: 0}
@@ -1945,23 +1949,23 @@ MonoBehaviour:
     renderNeighborFaces: 0
     transparency: 0
     icon: {fileID: 1333480662, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
-    backFaceTexture: 0
-    frontFaceTexture: 0
-    topFaceTexture: 0
-    bottomFaceTexture: 0
-    leftFaceTexture: 0
-    rightFaceTexture: 0
+    backFaceTexture: 2
+    frontFaceTexture: 2
+    topFaceTexture: 2
+    bottomFaceTexture: 2
+    leftFaceTexture: 2
+    rightFaceTexture: 2
   - blockName: Grass
     isSolid: 1
     renderNeighborFaces: 0
     transparency: 0
     icon: {fileID: 890747962, guid: 5041aa1d93609fd4bb4bd8a168dc133b, type: 3}
-    backFaceTexture: 2
-    frontFaceTexture: 2
+    backFaceTexture: 4
+    frontFaceTexture: 4
     topFaceTexture: 7
-    bottomFaceTexture: 1
-    leftFaceTexture: 2
-    rightFaceTexture: 2
+    bottomFaceTexture: 3
+    leftFaceTexture: 4
+    rightFaceTexture: 4
   - blockName: Dirt
     isSolid: 1
     renderNeighborFaces: 0
