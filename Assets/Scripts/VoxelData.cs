@@ -26,7 +26,7 @@ public static class VoxelData {
         get { return 1f/ (float)TextureAtlasSizeInBlocks; }
     }
 
-    // mathamatically better but doesnt work with unity lighting
+    // mathematically better but doesnt work with unity lighting
     // to fix that add offsets of 0.05
     public static readonly Vector3[] voxelVerts = {
         new Vector3(0.0f, 0.0f, 0.0f),
