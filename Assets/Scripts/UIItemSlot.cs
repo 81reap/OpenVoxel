@@ -35,13 +35,12 @@ public class UIItemSlot : MonoBehaviour {
     public void unLink () {
         itemSlot.unLinkUISlot();
         itemSlot = null;
-        isLinked = false;
         UpdateSlot();
     }
 
     public void UpdateSlot() {
         if (itemSlot != null && itemSlot.HasItem) {
-            slotIcon.sprite = world.blockTypes[itemSlot.stack.id].icon;
+            slotIcon.sprite = world.blocktypes[itemSlot.stack.id].icon;
             slotAmount.text = itemSlot.stack.amount.ToString();
             slotIcon.enabled = true;
             slotAmount.enabled = true;

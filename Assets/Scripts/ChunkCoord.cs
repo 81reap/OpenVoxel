@@ -6,6 +6,10 @@ public class ChunkCoord {
     public int x;
     public int z;
 
+    public ChunkCoord () {
+        x = 0;
+        z = 0;
+    }
     public ChunkCoord(int _x, int _z) {
         x = _x;
         z = _z;

@@ -131,7 +131,7 @@ public class Player : MonoBehaviour {
         while (step < reach) {
             Vector3 pos = cam.position + (cam.forward* step);
 
-            if (world.CheckForBlock(pos)){
+            if (world.CheckForVoxel(pos)){
                 highlightBlock.position = new Vector3(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), Mathf.FloorToInt(pos.z));
                 placeBlock.position = lastPos;
 
@@ -150,10 +150,10 @@ public class Player : MonoBehaviour {
     }
 
     private float checkDownSpeed (float downSpeed) {
-        if (world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y + downSpeed, transform.position.z - playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y + downSpeed, transform.position.z - playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y + downSpeed, transform.position.z + playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y + downSpeed, transform.position.z + playerWidth))) {
+        if (world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y + downSpeed, transform.position.z - playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y + downSpeed, transform.position.z - playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y + downSpeed, transform.position.z + playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y + downSpeed, transform.position.z + playerWidth))) {
             isGrounded = true;
             return 0;
         }
@@ -163,42 +163,42 @@ public class Player : MonoBehaviour {
     }
 
     private float checkUpSpeed (float upSpeed) {
-        if (world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y + 2f + upSpeed, transform.position.z - playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y + 2f + upSpeed, transform.position.z - playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y + 2f + upSpeed, transform.position.z + playerWidth)) ||
-            world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y + 2f + upSpeed, transform.position.z + playerWidth)))
+        if (world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y + 2f + upSpeed, transform.position.z - playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y + 2f + upSpeed, transform.position.z - playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y + 2f + upSpeed, transform.position.z + playerWidth)) ||
+            world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y + 2f + upSpeed, transform.position.z + playerWidth)))
             return 0;
         return upSpeed;
     }
 
     public bool front {
         get {
-            if (world.CheckForBlock(new Vector3(transform.position.x, transform.position.y, transform.position.z + playerWidth)) ||
-                world.CheckForBlock(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z + playerWidth)))
+            if (world.CheckForVoxel(new Vector3(transform.position.x, transform.position.y, transform.position.z + playerWidth)) ||
+                world.CheckForVoxel(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z + playerWidth)))
                 return true;
             return false;
         }
     }
     public bool back {
         get {
-            if (world.CheckForBlock(new Vector3(transform.position.x, transform.position.y, transform.position.z - playerWidth)) ||
-                world.CheckForBlock(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z - playerWidth)))
+            if (world.CheckForVoxel(new Vector3(transform.position.x, transform.position.y, transform.position.z - playerWidth)) ||
+                world.CheckForVoxel(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z - playerWidth)))
                 return true;
             return false;
         }
     }
     public bool left {
         get {
-            if (world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y, transform.position.z)) ||
-                world.CheckForBlock(new Vector3(transform.position.x - playerWidth, transform.position.y + 1f, transform.position.z)))
+            if (world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y, transform.position.z)) ||
+                world.CheckForVoxel(new Vector3(transform.position.x - playerWidth, transform.position.y + 1f, transform.position.z)))
                 return true;
             return false;
         }
     }
     public bool right {
         get {
-            if (world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y, transform.position.z)) ||
-                world.CheckForBlock(new Vector3(transform.position.x + playerWidth, transform.position.y + 1f, transform.position.z)))
+            if (world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y, transform.position.z)) ||
+                world.CheckForVoxel(new Vector3(transform.position.x + playerWidth, transform.position.y + 1f, transform.position.z)))
                 return true;
             return false;
         }

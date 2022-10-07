@@ -18,7 +18,7 @@ public class DebugScreen : MonoBehaviour {
         world = GameObject.Find("World").GetComponent<World>();
         text = GetComponent<TextMeshProUGUI>();
 
-        halfWorldSizeInVoxels = VoxelData.WorldSizeInBlocks / 2;
+        halfWorldSizeInVoxels = VoxelData.WorldSizeInVoxels / 2;
         halfWorldSizeInChunks = VoxelData.WorldSizeInChunks / 2;
     }
 

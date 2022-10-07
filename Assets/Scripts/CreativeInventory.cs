@@ -10,7 +10,7 @@ public class CreativeInventory : MonoBehaviour {
 
     private void Start() {
         world = GameObject.Find("World").GetComponent<World>();
-        for (int i = 1; i < world.blockTypes.Length; i++) {
+        for (int i = 1; i < world.blocktypes.Length; i++) {
             GameObject newSlot = Instantiate(slotPrefab, transform);
 
             ItemStack stack = new ItemStack((byte)i, 64);
