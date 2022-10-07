@@ -19,6 +19,7 @@ MonoBehaviour:
   terrainScale: 0.05
   surfaceBlock: 9
   subSurfaceBlock: 9
+  sedimentaryBlock: 10
   majorFloraIndex: 1
   majorFloraZoneScale: 1.06
   majorFloraZoneThreshold: 0.75

@@ -321,7 +321,7 @@ public class World : MonoBehaviour {
         else if (yAbs> terrainHeight)
             return 0; // air
         else
-            voxelValue= 1; // stone
+            voxelValue= biome.sedimentaryBlock; // stone/sandstone
 
         // -!- second pass :: ores -!-
         if (voxelValue == 1) {
@@ -367,12 +367,40 @@ public class BlockType {
     public Sprite icon;
 
     [Header("Texture Values")]
-    public int backFaceTexture;
-    public int frontFaceTexture;
-    public int topFaceTexture;
-    public int bottomFaceTexture;
-    public int leftFaceTexture;
-    public int rightFaceTexture;
+    public int backXFaceTexture;
+    public int backYFaceTexture;
+    public int backFaceTexture {
+        get { return backXFaceTexture*16 + backYFaceTexture; }
+    }
+
+    public int frontXFaceTexture;
+    public int frontYFaceTexture;
+    public int frontFaceTexture {
+        get { return frontXFaceTexture*16 + frontYFaceTexture; }
+    }
+
+    public int topXFaceTexture;
+    public int topYFaceTexture;
+    public int topFaceTexture {
+        get { return topXFaceTexture*16 + topYFaceTexture; }
+    }
+
+    public int bottomXFaceTexture;
+    public int bottomYFaceTexture;
+    public int bottomFaceTexture {
+        get { return bottomXFaceTexture*16 + bottomYFaceTexture; }
+    }
+
+    public int leftXFaceTexture;
+    public int leftYFaceTexture;
+    public int leftFaceTexture {
+        get { return leftXFaceTexture*16 + leftYFaceTexture; }
+    }
+    public int rightXFaceTexture;
+    public int rightYFaceTexture;
+    public int rightFaceTexture {
+        get { return rightXFaceTexture*16 + rightYFaceTexture; }
+    }
 
     // Back, Front, Top, Bottom, Left, Right
     public int GetTextureID (int faceIndex) {

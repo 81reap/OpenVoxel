@@ -42,9 +42,7 @@ public static class Structure {
             height = minTrunkHeight;
 
         for (int i = 1; i <= height; i++)
-            queue.Enqueue(new VoxelMod(new Vector3(position.x, position.y+ i, position.z), 10));
-        // top of the cactus
-        queue.Enqueue(new VoxelMod(new Vector3(position.x, position.y+ height+1, position.z), 11));
+            queue.Enqueue(new VoxelMod(new Vector3(position.x, position.y+ i, position.z), 12));
 
         return queue;
     }

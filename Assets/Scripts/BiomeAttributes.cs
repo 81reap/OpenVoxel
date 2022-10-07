@@ -14,6 +14,7 @@ public class BiomeAttributes : ScriptableObject {
 
     public byte surfaceBlock;
     public byte subSurfaceBlock;
+    public byte sedimentaryBlock;
 
     [Header("Major Flora")]
     public int majorFloraIndex;
