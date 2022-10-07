@@ -54,7 +54,7 @@ public class UIItemSlot : MonoBehaviour {
         slotAmount.enabled = false;
     }
     private void OnDestroy() {
-        if (isLinked)
+        if (itemSlot != null)
             itemSlot.unLinkUISlot();
     }
 }
